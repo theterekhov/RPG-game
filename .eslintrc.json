@@ -1,0 +1,49 @@
+{
+  "extends": "airbnb-base",
+  "env": {
+    "browser": true,
+    "es2022": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "ignorePatterns": [
+    "dist/",
+    "coverage/"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "webpack.config.js"
+      ],
+      "env": {
+        "node": true
+      },
+      "rules": {
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": true
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "**/__tests__/**/*.js"
+      ],
+      "env": {
+        "jest": true
+      },
+      "rules": {
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": true
+          }
+        ]
+      }
+    }
+  ]
+}
