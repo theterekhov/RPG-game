@@ -5,10 +5,32 @@ import Dwarf from './Dwarf';
 import Crossbowman from './Crossbowman';
 import Demiurge from './Demiurge';
 
-const characterClasses = [Warrior, Archer, Mage, Dwarf, Crossbowman, Demiurge];
+const maxRounds = 1000;
+const squad = [
+  [Warrior, 'Воин'],
+  [Archer, 'Лучник'],
+  [Mage, 'Маг'],
+  [Dwarf, 'Гном'],
+  [Crossbowman, 'Арбалетчик'],
+  [Demiurge, 'Демиург'],
+];
 
-export default function play(players = []) {
-  const characters = characterClasses.map((Character) => new Character(0, Character.name));
+export function createPlayers() {
+  return squad.map(([Character, name], index) => new Character(index * 2, name));
+}
 
-  return [...characters, ...players];
+export default function play(players = createPlayers()) {
+  let round = 0;
+
+  while (players.filter((player) => !player.isDead()).length > 1 && round < maxRounds) {
+    players.forEach((player) => {
+      if (!player.isDead()) {
+        player.turn(players);
+      }
+    });
+
+    round += 1;
+  }
+
+  return players.find((player) => !player.isDead()) || null;
 }
