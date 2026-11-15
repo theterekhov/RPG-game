@@ -7,9 +7,10 @@
     "build": "webpack --mode production",
     "start": "webpack serve --mode development",
     "lint": "eslint .",
-    "test": "",
+    "test": "jest",
     "show:dist": "http-server dist",
-    "build:babel": "babel src -d dist"
+    "build:babel": "babel src -d dist",
+    "coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "eslint-plugin-import": "^2.29.1",
     "html-webpack-plugin": "^5.6.0",
     "http-server": "^14.1.1",
+    "jest": "^30.5.2",
     "mini-css-extract-plugin": "^2.9.0",
     "webpack": "^5.92.0",
     "webpack-cli": "^5.1.4",
