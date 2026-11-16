@@ -14,6 +14,14 @@ import Axe from '../js/Axe';
 import StormStaff from '../js/StormStaff';
 import play from '../js/game';
 
+beforeEach(() => {
+  jest.spyOn(console, 'log').mockImplementation(() => {});
+});
+
+afterEach(() => {
+  jest.restoreAllMocks();
+});
+
 describe('Player', () => {
   let player;
 

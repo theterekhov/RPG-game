@@ -32,5 +32,11 @@ export default function play(players = createPlayers()) {
     round += 1;
   }
 
-  return players.find((player) => !player.isDead()) || null;
+  const winner = players.find((player) => !player.isDead()) || null;
+
+  if (winner) {
+    console.log(`Победитель: ${winner.name} (${winner.description})`);
+  }
+
+  return winner;
 }

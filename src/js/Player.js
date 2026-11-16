@@ -32,6 +32,7 @@ export default class Player {
 
   takeDamage(damage) {
     this.life = Math.max(0, this.life - damage);
+    console.log(`${this.name}: урон ${damage.toFixed(2)}, осталось ${this.life.toFixed(2)} жизни`);
   }
 
   isDead() {
@@ -92,8 +93,11 @@ export default class Player {
     const distance = Math.max(1, Math.abs(this.position - enemy.position));
 
     if (distance > this.weapon.range) {
+      console.log(`${this.name} не достаёт до ${enemy.name}`);
       return;
     }
+
+    console.log(`${this.name} атакует ${enemy.name} оружием «${this.weapon.name}»`);
 
     this.weapon.takeDamage(10 * this.getLuck());
     const damage = this.getDamage(distance);
